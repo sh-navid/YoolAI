@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  /* Set a dark background for the entire body */
+  background-color: #0a0a0a; 
+  font-family: 'Press Start 2P', cursive, monospace; /* Apply the bit-chat font globally */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Press Start 2P', cursive, monospace;
+}
