@@ -1,14 +1,15 @@
 .chat-window {
   width: 100%;
-  max-width: 600px; /* Standard chat width */
-  height: 550px; /* Fixed height for chat window */
+  max-width: none; /* Remove max-width constraint */
+  height: 100%; /* Make chat window fill height */
+  max-height: none; /* Remove max-height constraint */
   border: 1px solid #ddd;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: #fff; /* White background */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
   color: #333;
   box-sizing: border-box;
@@ -20,8 +21,9 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Space between messages */
-  background-color: #e5ddd5; /* Light, warm background like Telegram */
+  gap: 10px;
+  background-color: #e5ddd5;
+  min-height: 0; /* Allow flex item to shrink and use available height */
 }
 
 /* Scrollbar styling */
@@ -41,35 +43,35 @@
 
 
 .message {
-  max-width: 80%; /* Messages don't span full width */
+  max-width: 80%;
   padding: 10px 14px;
-  border-radius: 18px; /* Rounded bubbles */
+  border-radius: 18px;
   word-wrap: break-word;
   font-size: 0.95em;
   line-height: 1.4;
   position: relative;
-  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13); /* Subtle shadow for message bubbles */
+  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
 }
 
 .message.user {
   align-self: flex-end;
-  background-color: #dcf8c6; /* Light green for user messages */
+  background-color: #dcf8c6;
   color: #333;
-  border-bottom-right-radius: 4px; /* Slightly different corner for "tail" */
+  border-bottom-right-radius: 4px;
 }
 
 .message.bot {
   align-self: flex-start;
-  background-color: #ffffff; /* White for bot messages */
+  background-color: #ffffff;
   color: #333;
-  border-bottom-left-radius: 4px; /* Slightly different corner for "tail" */
+  border-bottom-left-radius: 4px;
 }
 
 .input-container {
   display: flex;
   padding: 10px;
   border-top: 1px solid #eee;
-  background-color: #f0f2f5; /* Light grey background for input */
+  background-color: #f0f2f5;
   align-items: center;
 }
 
@@ -77,7 +79,7 @@
   flex-grow: 1;
   padding: 10px 15px;
   border: 1px solid #ccc;
-  border-radius: 20px; /* Pill-shaped input */
+  border-radius: 20px;
   margin-right: 10px;
   font-size: 1em;
   background-color: #fff;
@@ -92,25 +94,25 @@
 }
 
 .input-container button {
-  background-color: #007bff; /* Primary blue for send button */
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 50%; /* Round send button */
+  border-radius: 50%;
   width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 1.2em; /* Icon-like size */
+  font-size: 1.2em;
   transition: background-color 0.2s ease, transform 0.1s ease;
-  flex-shrink: 0; /* Prevent button from shrinking */
+  flex-shrink: 0;
 }
 
 /* Using an SVG or Font Awesome for a cleaner arrow icon is recommended */
 /* For simplicity, we'll indicate "send" with a character */
 .input-container button::before {
-  content: '➤'; /* Unicode arrow or icon */
+  content: '➤';
 }
 
 .input-container button:hover {
@@ -124,8 +126,8 @@
 /* Media queries for chat window */
 @media (max-width: 768px) {
   .chat-window {
-    max-width: 95%;
-    height: 500px;
+    max-width: none;
+    height: 100%;
   }
   .message {
     font-size: 0.9em;
@@ -144,9 +146,9 @@
 
 @media (max-width: 480px) {
   .chat-window {
-    max-width: 100%; /* Full width on very small screens */
-    height: 450px;
-    border-radius: 0; /* No border-radius on full-width mobile */
+    max-width: none;
+    height: 100%;
+    border-radius: 0;
     box-shadow: none;
   }
   .messages-container {

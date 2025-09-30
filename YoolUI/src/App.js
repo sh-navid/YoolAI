@@ -84,28 +84,28 @@ function App() {
           <button onClick={() => { setActiveView('tasks'); setCurrentTask(null); }} className={activeView === 'tasks' ? 'active' : ''}>Tasks</button>
           <button onClick={() => setActiveView('gps')} className={activeView === 'gps' ? 'active' : ''}>GPS Points</button>
         </nav>
-        <div className="content-area">
-          {activeView === 'chat' && (
-            <ChatWindow messages={messages} onSendMessage={handleSendMessage} />
-          )}
-          {activeView === 'tasks' && (
-            <TaskScheduler tasks={tasks} setTasks={setTasks} onSelectTask={handleSelectTask} />
-          )}
-          {activeView === 'gps' && currentTask && (
-            <GPSTracker
-              taskName={currentTask.name} // Pass task name for context
-              gpsPoints={currentTask.gpsPoints}
-              setGpsPoints={updateTaskGpsPoints}
-            />
-          )}
-          {activeView === 'gps' && !currentTask && (
-            <div className="no-task-selected-message">
-              <p>No task selected. Please select a task from the "Tasks" view to see its GPS points.</p>
-              <button onClick={() => setActiveView('tasks')}>Go to Tasks</button>
-            </div>
-          )}
-        </div>
-      </header>
+      </header> {/* Move content-area out of header */}
+      <div className="content-area"> {/* Content area for dynamic views */}
+        {activeView === 'chat' && (
+          <ChatWindow messages={messages} onSendMessage={handleSendMessage} />
+        )}
+        {activeView === 'tasks' && (
+          <TaskScheduler tasks={tasks} setTasks={setTasks} onSelectTask={handleSelectTask} />
+        )}
+        {activeView === 'gps' && currentTask && (
+          <GPSTracker
+            taskName={currentTask.name} // Pass task name for context
+            gpsPoints={currentTask.gpsPoints}
+            setGpsPoints={updateTaskGpsPoints}
+          />
+        )}
+        {activeView === 'gps' && !currentTask && (
+          <div className="no-task-selected-message">
+            <p>No task selected. Please select a task from the "Tasks" view to see its GPS points.</p>
+            <button onClick={() => setActiveView('tasks')}>Go to Tasks</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
