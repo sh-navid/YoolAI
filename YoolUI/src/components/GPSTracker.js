@@ -11,8 +11,8 @@ const GPSTracker = ({ taskName, gpsPoints, setGpsPoints }) => {
     if (newLat.trim() && newLng.trim() && newType.trim()) { // Type is now mandatory
       const newPoint = {
         id: Date.now(),
-        lat: parseFloat(newLat),
-        lng: parseFloat(newLng),
+        lat: parseFloat(newLat), // Ensure latitude is a number
+        lng: parseFloat(newLng), // Ensure longitude is a number
         type: newType.toLowerCase().trim(), // Store type in lowercase for consistency
         description: newDesc.trim() || `Point ${Date.now() % 1000}`,
       };
@@ -37,7 +37,7 @@ const GPSTracker = ({ taskName, gpsPoints, setGpsPoints }) => {
       {taskName && <h3 className="current-task-name">Mission: {taskName}</h3>}
 
       {gpsPoints.length === 0 && (
-        <p className="no-gps-message">No GPS points for this mission yet.</p>
+        <p className="no-gps-message">No GPS points for this mission yet. Add one below!</p>
       )}
 
       <ul className="gps-list">
@@ -76,7 +76,7 @@ const GPSTracker = ({ taskName, gpsPoints, setGpsPoints }) => {
           type="text"
           value={newType}
           onChange={(e) => setNewType(e.target.value)}
-          placeholder="Type (e.g., home, gym, market)"
+          placeholder="Type (e.g., clinic, home, market)"
           onKeyPress={(e) => e.key === 'Enter' && handleAddGpsPoint()}
         />
         <input

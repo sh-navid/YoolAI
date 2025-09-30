@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
-import './ChatWindow.css'; // Assuming you'll create a CSS file for styling
+import React, { useState, useRef, useEffect } from 'react';
+import './ChatWindow.css';
 
 const ChatWindow = ({ messages, onSendMessage }) => {
   const [inputMessage, setInputMessage] = useState('');
+  const messagesEndRef = useRef(null); // Ref to scroll to the latest message
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom(); // Scroll on initial load and message updates
+  }, [messages]);
 
   const handleInputChange = (event) => {
     setInputMessage(event.target.value);
@@ -16,7 +25,8 @@ const ChatWindow = ({ messages, onSendMessage }) => {
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && !event.shiftKey) { // Allow Shift+Enter for new lines
+      event.preventDefault(); // Prevent default Enter behavior (e.g., new line in textarea)
       handleSendClick();
     }
   };
@@ -29,16 +39,20 @@ const ChatWindow = ({ messages, onSendMessage }) => {
             {message.text}
           </div>
         ))}
+        <div ref={messagesEndRef} /> {/* Element to scroll to */}
       </div>
       <div className="input-container">
         <input
-          type="text"
+          type="text" // Changed to textarea if multi-line input is desired, but keeping text for simplicity
           value={inputMessage}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
           placeholder="Type your message..."
         />
-        <button onClick={handleSendClick}>Send</button>
+        <button onClick={handleSendClick}>
+          {/* Unicode send arrow. For a real app, use an icon library like Font Awesome */}
+          <span role="img" aria-label="send"></span>
+        </button>
       </div>
     </div>
   );

@@ -1,61 +1,106 @@
 .gps-tracker-container {
   width: 100%;
-  max-width: 480px;
-  background-color: #0d0d0d;
-  border: 2px solid #00ff00;
-  border-radius: 5px;
-  box-shadow: 5px 5px 0px #00ff00;
+  max-width: 600px;
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ddd; /* Soft border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
   padding: 20px;
-  color: #00ff00;
-  font-family: 'Press Start 2P', cursive, monospace;
+  color: #333; /* Dark text */
+  font-family: Arial, sans-serif;
   box-sizing: border-box;
 }
 
 .gps-tracker-container h2 {
-  color: #39ff14;
-  margin-bottom: 10px; /* Reduced margin */
-  font-size: 1.5em;
+  color: #007bff; /* Primary blue for headings */
+  margin-bottom: 10px;
+  font-size: 1.6em;
   text-align: center;
+  font-weight: 600;
 }
 
 .current-task-name {
-  color: #00e600; /* Slightly different green for current task name */
+  color: #555; /* Neutral tone for task name */
   font-size: 1em;
   text-align: center;
   margin-bottom: 20px;
-  word-break: break-word; /* Ensure long task names wrap */
+  word-break: break-word;
+  font-weight: 500;
 }
 
 .no-gps-message {
   text-align: center;
-  color: #008000;
-  margin-bottom: 20px;
-  font-size: 0.9em;
+  color: #888; /* Softer grey for messages */
+  margin: 20px 0;
+  font-size: 0.95em;
+  padding: 10px;
+  background-color: #f0f2f5;
+  border-radius: 5px;
 }
+
+/* Styles for "No task selected" message within GPSTracker's context */
+.no-task-selected-message {
+  width: 100%;
+  max-width: 480px; /* Keep consistent max-width */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  color: #333;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.no-task-selected-message p {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+.no-task-selected-message button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  font-family: Arial, sans-serif;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: none; /* No uppercase */
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.no-task-selected-message button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
 
 .gps-list {
   list-style: none;
   padding: 0;
-  max-height: 200px; /* Adjusted height for new input field */
+  max-height: 220px; /* Adjusted height */
   overflow-y: auto;
   margin-bottom: 20px;
-  border-bottom: 1px dashed #008000;
-  padding-bottom: 10px;
+  border-top: 1px solid #eee; /* Soft separator */
+  padding-top: 10px;
 }
-/* Scrollbar styling for green terminal look */
+/* Scrollbar styling */
 .gps-list::-webkit-scrollbar {
   width: 8px;
 }
 .gps-list::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #f1f1f1;
 }
 .gps-list::-webkit-scrollbar-thumb {
-  background-color: #00ff00;
+  background-color: #ccc;
   border-radius: 4px;
-  border: 2px solid #1a1a1a;
 }
 .gps-list::-webkit-scrollbar-thumb:hover {
-  background-color: #39ff14;
+  background-color: #b3b3b3;
 }
 
 
@@ -63,49 +108,50 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1a1a1a;
-  border: 1px solid #008000;
-  padding: 8px 12px;
+  background-color: #f9f9f9; /* Light background for items */
+  border: 1px solid #eee; /* Subtle border */
+  padding: 10px 15px;
   margin-bottom: 8px;
-  border-radius: 3px;
-  font-size: 0.8em;
+  border-radius: 8px;
+  font-size: 0.9em;
   word-break: break-all;
 }
 
 .gps-item .gps-info {
   display: flex;
-  flex-direction: column; /* Stack info vertically */
+  flex-direction: column;
   flex-grow: 1;
   text-align: left;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .gps-item .gps-type {
-  color: #39ff14; /* Brighter green for type */
-  font-weight: bold;
+  color: #007bff; /* Primary blue for type */
+  font-weight: 600;
   margin-bottom: 2px;
+  text-transform: capitalize; /* Capitalize type for readability */
 }
 
 .gps-item .gps-description {
-  color: #00e600;
-  margin-bottom: 2px; /* Space between description and coords */
+  color: #555;
+  margin-bottom: 3px;
 }
 
 .gps-item .gps-coords {
-  color: #00ff00;
+  color: #888;
   white-space: nowrap;
-  font-size: 0.9em; /* Smaller for coords */
+  font-size: 0.85em;
 }
 
 .gps-item button.delete-button {
-  background-color: #8b0000;
-  color: #ff0000;
-  border: 1px solid #ff0000;
-  font-family: 'Press Start 2P', cursive, monospace;
-  padding: 3px 6px;
-  border-radius: 3px;
+  background-color: #dc3545; /* Red for delete */
+  color: white;
+  border: none;
+  font-family: Arial, sans-serif;
+  padding: 6px 10px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 0.6em;
+  font-size: 0.8em;
   text-transform: uppercase;
   margin-left: 10px;
   transition: background-color 0.2s;
@@ -113,126 +159,145 @@
 }
 
 .gps-item button.delete-button:hover {
-  background-color: #a00000;
-  color: #ffffff;
-  border-color: #ff0000;
+  background-color: #c82333;
 }
 
 .new-gps-input {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns for lat/lng */
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
+  margin-top: 15px;
 }
-/* For inputs that span two columns */
-.new-gps-input input:nth-child(3), /* Type input */
-.new-gps-input input:nth-child(4) /* Description input */ {
+.new-gps-input input:nth-child(3),
+.new-gps-input input:nth-child(4) {
   grid-column: span 2;
 }
 
-
 .new-gps-input input {
   padding: 10px;
-  background-color: #000;
-  border: 2px solid #00ff00;
-  color: #00ff00;
-  font-family: 'Press Start 2P', cursive, monospace;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  color: #333;
+  font-family: Arial, sans-serif;
   border-radius: 5px;
   outline: none;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .new-gps-input input::placeholder {
-  color: #008000;
+  color: #888;
 }
 
 .new-gps-input button {
   grid-column: 1 / -1;
-  background-color: #00ff00;
-  color: #000;
+  background-color: #28a745; /* Green for add */
+  color: #fff;
   border: none;
-  font-family: 'Press Start 2P', cursive, monospace;
+  font-family: Arial, sans-serif;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
-  text-transform: uppercase;
-  transition: background-color 0.2s, box-shadow 0.2s;
-  box-shadow: 3px 3px 0px #008000;
-  font-size: 0.8em;
+  text-transform: none;
+  transition: background-color 0.2s, transform 0.1s;
+  font-size: 1em;
+  font-weight: 500;
 }
 
 .new-gps-input button:hover {
-  background-color: #39ff14;
-  box-shadow: 2px 2px 0px #00ff00;
+  background-color: #218838;
+  transform: translateY(-1px);
 }
 
 /* Media queries for GPS Tracker */
 @media (max-width: 768px) {
   .gps-tracker-container {
-    max-width: 90%;
+    max-width: 95%;
     padding: 15px;
   }
   .gps-tracker-container h2 {
-    font-size: 1.3em;
+    font-size: 1.4em;
   }
   .current-task-name {
     font-size: 0.9em;
   }
-  .new-gps-input input {
-    font-size: 0.7em;
-    padding: 8px 10px;
-  }
-  .new-gps-input button {
-    font-size: 0.7em;
+  .new-gps-input input, .new-gps-input button {
+    font-size: 0.85em;
     padding: 8px 12px;
   }
   .gps-item {
+    font-size: 0.8em;
+    padding: 8px 12px;
+  }
+  .gps-item button.delete-button {
     font-size: 0.7em;
-    padding: 6px 8px;
+    padding: 5px 8px;
   }
   .gps-list {
-    max-height: 150px; /* Reduced height to accommodate more inputs */
+    max-height: 180px;
+  }
+  .no-task-selected-message p {
+    font-size: 1em;
+  }
+  .no-task-selected-message button {
+    font-size: 0.9em;
+    padding: 8px 15px;
   }
 }
 
 @media (max-width: 480px) {
   .gps-tracker-container {
-    max-width: 95%;
+    max-width: 100%;
     padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
   }
   .gps-tracker-container h2 {
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
   .current-task-name {
     font-size: 0.8em;
   }
   .new-gps-input {
-    grid-template-columns: 1fr; /* Stack inputs vertically */
+    grid-template-columns: 1fr;
   }
-  /* For inputs that span two columns, now they span 1 (full width) */
   .new-gps-input input:nth-child(3),
   .new-gps-input input:nth-child(4) {
     grid-column: span 1;
   }
   .new-gps-input input, .new-gps-input button {
-    font-size: 0.6em;
-    padding: 6px 8px;
+    font-size: 0.8em;
+    padding: 7px 10px;
     width: 100%;
   }
   .gps-item {
-    font-size: 0.6em;
+    font-size: 0.75em;
     flex-wrap: wrap;
     gap: 5px;
-    padding: 5px 8px;
+    padding: 7px 10px;
   }
   .gps-item .gps-info {
-    width: 100%; /* Take full width for info */
+    width: 100%;
     margin-right: 0;
   }
   .gps-item button.delete-button {
     margin-top: 5px;
     margin-left: auto;
+    font-size: 0.65em;
+    padding: 4px 7px;
   }
   .gps-list {
-    max-height: 120px; /* Further reduced height for small screens */
+    max-height: 150px;
+  }
+  .no-task-selected-message {
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .no-task-selected-message p {
+    font-size: 0.9em;
+  }
+  .no-task-selected-message button {
+    font-size: 0.8em;
+    padding: 7px 12px;
   }
 }

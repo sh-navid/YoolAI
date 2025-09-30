@@ -1,17 +1,17 @@
 .chat-window {
-  width: 100%; /* Take full width of parent */
-  max-width: 480px; /* Max width for chat window */
-  height: 520px; /* Fixed height for chat window, can be percentage if needed */
-  border: 2px solid #00ff00;
-  border-radius: 5px;
+  width: 100%;
+  max-width: 600px; /* Standard chat width */
+  height: 550px; /* Fixed height for chat window */
+  border: 1px solid #ddd;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: #0d0d0d;
-  box-shadow: 5px 5px 0px #00ff00;
-  font-family: 'Press Start 2P', cursive, monospace;
-  color: #00ff00;
-  box-sizing: border-box; /* Include padding/border in element's total width */
+  background-color: #fff; /* White background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  font-family: Arial, sans-serif;
+  color: #333;
+  box-sizing: border-box;
 }
 
 .messages-container {
@@ -20,129 +20,154 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background-color: #1a1a1a;
-  border-bottom: 1px solid #00ff00;
+  gap: 10px; /* Space between messages */
+  background-color: #e5ddd5; /* Light, warm background like Telegram */
 }
 
+/* Scrollbar styling */
+.messages-container::-webkit-scrollbar {
+  width: 8px;
+}
+.messages-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.messages-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background-color: #b3b3b3;
+}
+
+
 .message {
-  max-width: 85%;
-  padding: 10px 15px;
-  border-radius: 5px;
+  max-width: 80%; /* Messages don't span full width */
+  padding: 10px 14px;
+  border-radius: 18px; /* Rounded bubbles */
   word-wrap: break-word;
-  font-size: 14px;
+  font-size: 0.95em;
   line-height: 1.4;
   position: relative;
-  background-color: #222;
-  color: #00ff00;
-  border: 1px solid #008000;
+  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13); /* Subtle shadow for message bubbles */
 }
 
 .message.user {
   align-self: flex-end;
-  background-color: #004d00;
-  color: #00ff00;
-  border-bottom-right-radius: 0;
-  box-shadow: 2px 2px 0px #008000;
+  background-color: #dcf8c6; /* Light green for user messages */
+  color: #333;
+  border-bottom-right-radius: 4px; /* Slightly different corner for "tail" */
 }
 
 .message.bot {
   align-self: flex-start;
-  background-color: #003300;
-  color: #39ff14;
-  border-bottom-left-radius: 0;
-  box-shadow: -2px 2px 0px #008000;
+  background-color: #ffffff; /* White for bot messages */
+  color: #333;
+  border-bottom-left-radius: 4px; /* Slightly different corner for "tail" */
 }
 
 .input-container {
   display: flex;
   padding: 10px;
-  border-top: 2px solid #00ff00;
-  background-color: #0d0d0d;
+  border-top: 1px solid #eee;
+  background-color: #f0f2f5; /* Light grey background for input */
   align-items: center;
 }
 
 .input-container input {
   flex-grow: 1;
   padding: 10px 15px;
-  border: 2px solid #00ff00;
-  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Pill-shaped input */
   margin-right: 10px;
-  font-size: 14px;
-  background-color: #000;
-  color: #00ff00;
+  font-size: 1em;
+  background-color: #fff;
+  color: #333;
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .input-container input:focus {
-  border-color: #39ff14;
-  box-shadow: 0 0 5px #00ff00;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .input-container button {
-  background-color: #00ff00;
-  color: #000;
+  background-color: #007bff; /* Primary blue for send button */
+  color: white;
   border: none;
-  border-radius: 5px;
-  padding: 10px 18px;
+  border-radius: 50%; /* Round send button */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  transition: background-color 0.2s ease, box-shadow 0.1s ease-in-out;
-  box-shadow: 3px 3px 0px #008000;
-  text-transform: uppercase;
+  font-size: 1.2em; /* Icon-like size */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+/* Using an SVG or Font Awesome for a cleaner arrow icon is recommended */
+/* For simplicity, we'll indicate "send" with a character */
+.input-container button::before {
+  content: '➤'; /* Unicode arrow or icon */
 }
 
 .input-container button:hover {
-  background-color: #39ff14;
-  box-shadow: 2px 2px 0px #00ff00;
+  background-color: #0056b3;
 }
 
 .input-container button:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #00ff00;
+  transform: scale(0.95);
 }
 
 /* Media queries for chat window */
 @media (max-width: 768px) {
   .chat-window {
-    max-width: 90%;
-    height: 450px;
+    max-width: 95%;
+    height: 500px;
   }
   .message {
-    font-size: 12px;
-    padding: 8px 10px;
+    font-size: 0.9em;
+    padding: 8px 12px;
   }
-  .input-container input, .input-container button {
-    font-size: 12px;
-    padding: 8px 10px;
+  .input-container input {
+    font-size: 0.9em;
+    padding: 8px 12px;
+  }
+  .input-container button {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1em;
   }
 }
 
 @media (max-width: 480px) {
   .chat-window {
-    max-width: 95%; /* Even wider on very small screens */
-    height: 400px;
-    padding: 5px;
+    max-width: 100%; /* Full width on very small screens */
+    height: 450px;
+    border-radius: 0; /* No border-radius on full-width mobile */
+    box-shadow: none;
   }
   .messages-container {
     padding: 10px;
     gap: 8px;
   }
   .message {
-    font-size: 10px;
-    padding: 6px 8px;
+    font-size: 0.85em;
+    padding: 7px 10px;
   }
   .input-container {
-    flex-direction: column; /* Stack input and button */
-    gap: 5px;
-    padding: 5px;
+    padding: 8px;
   }
   .input-container input {
-    margin-right: 0;
-    width: 100%;
+    margin-right: 8px;
+    font-size: 0.85em;
+    padding: 7px 10px;
   }
   .input-container button {
-    width: 100%;
+    width: 32px;
+    height: 32px;
+    font-size: 1em;
   }
 }

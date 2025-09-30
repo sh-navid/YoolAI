@@ -51,8 +51,8 @@ const TaskScheduler = ({ tasks, setTasks, onSelectTask }) => {
               {task.name}
             </span>
             <div className="task-actions">
-              <button 
-                onClick={() => onSelectTask(task)} 
+              <button
+                onClick={() => onSelectTask(task)}
                 className="view-gps-button"
                 title="View GPS Points"
               >

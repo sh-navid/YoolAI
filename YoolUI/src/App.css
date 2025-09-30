@@ -3,181 +3,105 @@ html, body, #root, .App {
   margin: 0;
   padding: 0;
   overflow: hidden; /* Prevent scrolling on the main page */
+  font-family: Arial, sans-serif; /* Modern, clear font */
 }
 
 .App {
   text-align: center;
   display: flex;
   flex-direction: column; /* Allows navigation and content to stack */
-}
-
-.App-logo {
-  height: 10vmin; /* Smaller logo for full screen */
-  pointer-events: none;
-  margin-bottom: 20px; /* Add space below logo */
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background-color: #f0f2f5; /* Light grey background */
+  color: #333; /* Darker text for readability */
 }
 
 .App-header {
-  background-color: #1a1a1a; /* Dark background for a terminal feel */
-  min-height: 100vh; /* Takes full viewport height */
-  width: 100vw;    /* Takes full viewport width */
+  background-color: #ffffff; /* White header background */
+  padding: 15px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align content to the top */
-  font-size: calc(10px + 2vmin);
-  color: #00ff00; /* Green text for a terminal feel */
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto; /* Allow header content to scroll if needed */
-}
-
-.App-link {
-  color: #39ff14;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  position: sticky; /* Sticky header */
+  top: 0;
+  z-index: 1000;
 }
 
 .main-nav {
-  margin-bottom: 20px;
   display: flex;
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  justify-content: center;
   gap: 10px;
-  justify-content: center; /* Center buttons */
-  max-width: 90%; /* Limit nav width */
-  width: 100%; /* Take full width within max-width */
+  width: 100%;
+  max-width: 600px; /* Limit nav width for better aesthetics */
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .main-nav button {
-  flex: 1 1 auto; /* Allow buttons to grow and shrink */
-  min-width: 100px; /* Minimum width for buttons */
-  background-color: #004d00;
-  color: #00ff00;
-  border: 2px solid #008000;
+  background-color: #007bff; /* Primary blue button */
+  color: white;
+  border: none;
   border-radius: 5px;
   padding: 10px 15px;
   cursor: pointer;
-  font-family: 'Press Start 2P', cursive, monospace;
-  font-size: 0.8em; /* Slightly smaller font for buttons */
-  text-transform: uppercase;
-  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
-  box-shadow: 3px 3px 0px #008000;
-  text-align: center; /* Ensure text is centered in buttons */
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  flex: 1; /* Distribute space evenly */
+  min-width: 80px; /* Ensure buttons don't get too small */
 }
 
 .main-nav button:hover {
-  background-color: #006600;
-  border-color: #39ff14;
-  box-shadow: 2px 2px 0px #39ff14;
+  background-color: #0056b3;
 }
 
 .main-nav button.active {
-  background-color: #00ff00;
-  color: #000;
-  border-color: #00ff00;
-  box-shadow: none;
-  transform: translateY(2px);
+  background-color: #28a745; /* Green for active button */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .content-area {
-  margin-top: 20px;
-  width: 100%; /* Take full width */
-  max-width: 1200px; /* Max width for content area */
-  flex-grow: 1; /* Allow content to grow */
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  overflow-y: auto; /* Allow specific content area to scroll */
-}
-
-.no-task-selected-message {
-  width: 100%;
-  max-width: 480px;
-  background-color: #0d0d0d;
-  border: 2px solid #00ff00;
-  border-radius: 5px;
-  box-shadow: 5px 5px 0px #00ff00;
   padding: 20px;
-  color: #00ff00;
-  font-family: 'Press Start 2P', cursive, monospace;
-  box-sizing: border-box;
-  text-align: center;
+  overflow-y: auto; /* Allow content to scroll */
+  background-color: #f8f9fa; /* Lighter background for content area */
 }
 
-.no-task-selected-message p {
-  color: #39ff14;
-  margin-bottom: 20px;
-  font-size: 1.1em;
-}
-
-.no-task-selected-message button {
-  background-color: #00ff00;
-  color: #000;
-  border: none;
-  font-family: 'Press Start 2P', cursive, monospace;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: background-color 0.2s, box-shadow 0.2s;
-  box-shadow: 3px 3px 0px #008000;
-}
-
-.no-task-selected-message button:hover {
-  background-color: #39ff14;
-  box-shadow: 2px 2px 0px #00ff00;
-}
+/* No task selected message style moved to GPSTracker.css */
 
 
 /* Media queries for smaller screens */
 @media (max-width: 768px) {
   .App-header {
-    font-size: calc(8px + 1.5vmin);
+    padding: 10px 0;
+  }
+  .main-nav {
+    gap: 8px;
+    max-width: 95%;
   }
   .main-nav button {
-    font-size: 0.7em;
+    font-size: 0.9em;
     padding: 8px 12px;
   }
-  .no-task-selected-message p {
-    font-size: 0.9em;
+  .content-area {
+    padding: 10px;
   }
 }
 
 @media (max-width: 480px) {
-  .App-header {
-    padding: 10px;
-  }
   .main-nav {
-    flex-direction: column; /* Stack buttons vertically */
+    flex-wrap: wrap; /* Allow buttons to wrap */
     gap: 5px;
   }
   .main-nav button {
-    font-size: 0.6em;
-    padding: 5px 10px;
-    min-width: unset; /* Remove min-width to allow full stacking */
+    font-size: 0.8em;
+    padding: 6px 10px;
+    min-width: unset; /* Remove min-width to allow full stacking if needed */
   }
-  .App-logo {
-     height: 8vmin;
-     margin-bottom: 10px;
-  }
-  .no-task-selected-message p {
-    font-size: 0.7em;
-  }
-  .no-task-selected-message button {
-    font-size: 0.7em;
-    padding: 8px 12px;
+  .content-area {
+    padding: 5px;
   }
 }

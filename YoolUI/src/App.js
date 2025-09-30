@@ -13,7 +13,7 @@ function App() {
       completed: false,
       gpsPoints: [
         { id: 101, lat: 34.0522, lng: -118.2437, type: "anomaly", description: "Anomaly Site A" },
-        { id: 102, lat: 34.0530, lng: -118.2450, type: "research", description: "Anomaly Site B" },
+        { id: 102, lat: 15.0000, lng: -100.0000, type: "research", description: "Research Outpost" },
       ],
     },
     {
@@ -21,7 +21,7 @@ function App() {
       name: "Retrieve data core from abandoned facility",
       completed: true,
       gpsPoints: [
-        { id: 201, lat: 33.9578, lng: -118.4000, type: "facility", description: "Facility Entrance" },
+        { id: 201, lat: 33.9578, lng: -118.4000, type: "facility", description: "Old Facility Entrance" },
       ],
     },
     {
@@ -29,7 +29,7 @@ function App() {
       name: "Restock supplies at distribution hub",
       completed: false,
       gpsPoints: [
-        { id: 301, lat: 34.1000, lng: -118.5000, type: "supermarket", description: "Central Provisions" },
+        { id: 301, lat: 34.1000, lng: -118.5000, type: "supermarket", description: "Main Provisioning Hub" },
         { id: 302, lat: 34.1122, lng: -118.5134, type: "gym", description: "Rec Center" },
       ],
     },
