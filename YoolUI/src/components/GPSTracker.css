@@ -1,18 +1,18 @@
 .gps-tracker-container {
   width: 100%;
   max-width: 600px;
-  background-color: #ffffff; /* White background */
-  border: 1px solid #ddd; /* Soft border */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  color: #333; /* Dark text */
+  color: #333;
   font-family: Arial, sans-serif;
   box-sizing: border-box;
 }
 
 .gps-tracker-container h2 {
-  color: #007bff; /* Primary blue for headings */
+  color: #007bff;
   margin-bottom: 10px;
   font-size: 1.6em;
   text-align: center;
@@ -20,7 +20,7 @@
 }
 
 .current-task-name {
-  color: #555; /* Neutral tone for task name */
+  color: #555;
   font-size: 1em;
   text-align: center;
   margin-bottom: 20px;
@@ -30,7 +30,7 @@
 
 .no-gps-message {
   text-align: center;
-  color: #888; /* Softer grey for messages */
+  color: #888;
   margin: 20px 0;
   font-size: 0.95em;
   padding: 10px;
@@ -38,10 +38,9 @@
   border-radius: 5px;
 }
 
-/* Styles for "No task selected" message within GPSTracker's context */
 .no-task-selected-message {
   width: 100%;
-  max-width: 480px; /* Keep consistent max-width */
+  max-width: 480px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -68,7 +67,7 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  text-transform: none; /* No uppercase */
+  text-transform: none;
   font-weight: 500;
   transition: background-color 0.2s, transform 0.1s;
 }
@@ -82,13 +81,12 @@
 .gps-list {
   list-style: none;
   padding: 0;
-  max-height: 220px; /* Adjusted height */
+  max-height: 220px;
   overflow-y: auto;
   margin-bottom: 20px;
-  border-top: 1px solid #eee; /* Soft separator */
+  border-top: 1px solid #eee;
   padding-top: 10px;
 }
-/* Scrollbar styling */
 .gps-list::-webkit-scrollbar {
   width: 8px;
 }
@@ -108,18 +106,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f9f9f9; /* Light background for items */
-  border: 1px solid #eee; /* Subtle border */
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
   padding: 10px 15px;
   margin-bottom: 8px;
   border-radius: 8px;
   font-size: 0.9em;
   word-break: break-all;
+  transition: background-color 0.2s, border-color 0.2s; /* Added transition */
 }
 
 .gps-item.required {
-  border: 1px solid #007bff; /* Highlight required GPS points */
+  border: 1px solid #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.gps-item.visited {
+  background-color: #e6ffe6; /* Light green for visited */
+  border-color: #28a745; /* Green border */
+}
+
+.gps-item.visited .gps-info {
+  text-decoration: line-through; /* Strikethrough visited items */
+  color: #888;
 }
 
 .gps-item .gps-info {
@@ -131,11 +140,16 @@
 }
 
 .gps-item .gps-type {
-  color: #007bff; /* Primary blue for type */
+  color: #007bff;
   font-weight: 600;
   margin-bottom: 2px;
-  text-transform: capitalize; /* Capitalize type for readability */
+  text-transform: capitalize;
 }
+
+.gps-item.visited .gps-type {
+  color: #28a745; /* Darker green for visited type */
+}
+
 
 .gps-item .gps-description {
   color: #555;
@@ -148,8 +162,14 @@
   font-size: 0.85em;
 }
 
-.gps-item button.delete-button {
-  background-color: #dc3545; /* Red for delete */
+.gps-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.gps-item button.delete-button,
+.gps-item button.visit-button {
   color: white;
   border: none;
   font-family: Arial, sans-serif;
@@ -158,14 +178,33 @@
   cursor: pointer;
   font-size: 0.8em;
   text-transform: uppercase;
-  margin-left: 10px;
   transition: background-color 0.2s;
-  flex-shrink: 0;
+}
+
+.gps-item button.delete-button {
+  background-color: #dc3545;
 }
 
 .gps-item button.delete-button:hover {
   background-color: #c82333;
 }
+
+.gps-item button.visit-button {
+  background-color: #007bff; /* Blue for 'Visit' */
+}
+
+.gps-item button.visit-button.visited-button {
+  background-color: #28a745; /* Green when Visited */
+}
+
+.gps-item button.visit-button:hover:not(.visited-button) {
+  background-color: #0056b3;
+}
+
+.gps-item button.visit-button.visited-button:hover {
+  background-color: #218838;
+}
+
 
 .new-gps-input {
   display: grid;
@@ -173,12 +212,9 @@
   gap: 10px;
   margin-top: 15px;
 }
-.new-gps-input input:nth-child(3),
-.new-gps-input input:nth-child(4) {
-  grid-column: span 2;
-}
 
-.new-gps-input input {
+.new-gps-input input,
+.new-gps-input .gps-type-select {
   padding: 10px;
   background-color: #f8f9fa;
   border: 1px solid #ccc;
@@ -187,7 +223,15 @@
   border-radius: 5px;
   outline: none;
   font-size: 0.9em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 30px;
 }
+
 
 .new-gps-input input::placeholder {
   color: #888;
@@ -195,7 +239,7 @@
 
 .new-gps-input button {
   grid-column: 1 / -1;
-  background-color: #28a745; /* Green for add */
+  background-color: #28a745;
   color: #fff;
   border: none;
   font-family: Arial, sans-serif;
@@ -246,15 +290,22 @@
   .current-task-name {
     font-size: 0.9em;
   }
-  .new-gps-input input, .new-gps-input button {
+  .new-gps-input input,
+  .new-gps-input .gps-type-select,
+  .new-gps-input button {
     font-size: 0.85em;
     padding: 8px 12px;
+  }
+  .gps-type-select {
+    background-size: 18px;
+    background-position: right 6px center;
+    padding-right: 25px;
   }
   .gps-item {
     font-size: 0.8em;
     padding: 8px 12px;
   }
-  .gps-item button.delete-button {
+  .gps-item button {
     font-size: 0.7em;
     padding: 5px 8px;
   }
@@ -286,15 +337,20 @@
   .new-gps-input {
     grid-template-columns: 1fr;
   }
-  .new-gps-input input:nth-child(3),
-  .new-gps-input input:nth-child(4) {
-    grid-column: span 1;
-  }
-  .new-gps-input input, .new-gps-input button {
+  .new-gps-input input,
+  .new-gps-input .gps-type-select,
+  .new-gps-input button {
     font-size: 0.8em;
     padding: 7px 10px;
     width: 100%;
+    box-sizing: border-box;
   }
+  .gps-type-select {
+    background-size: 16px;
+    background-position: right 5px center;
+    padding-right: 20px;
+  }
+
   .gps-item {
     font-size: 0.75em;
     flex-wrap: wrap;
@@ -304,10 +360,13 @@
   .gps-item .gps-info {
     width: 100%;
     margin-right: 0;
+    margin-bottom: 5px; /* Space between info and actions */
   }
-  .gps-item button.delete-button {
-    margin-top: 5px;
-    margin-left: auto;
+  .gps-actions {
+    width: 100%;
+    justify-content: flex-end; /* Push action buttons to the right */
+  }
+  .gps-item button {
     font-size: 0.65em;
     padding: 4px 7px;
   }

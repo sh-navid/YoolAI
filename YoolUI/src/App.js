@@ -14,8 +14,8 @@ function App() {
       // gpsPoints are now types that can be fulfilled by any matching GPS point
       requiredGpsTypes: ["anomaly", "research"],
       gpsPoints: [
-        { id: 101, lat: 34.0522, lng: -118.2437, type: "anomaly", description: "Anomaly Site A" },
-        { id: 102, lat: 15.0000, lng: -100.0000, type: "research", description: "Research Outpost" },
+        { id: 101, lat: 34.0522, lng: -118.2437, type: "anomaly", description: "Anomaly Site A", visited: false },
+        { id: 102, lat: 15.0000, lng: -100.0000, type: "research", description: "Research Outpost", visited: false },
       ],
     },
     {
@@ -24,7 +24,8 @@ function App() {
       completed: true,
       requiredGpsTypes: ["facility"],
       gpsPoints: [
-        { id: 201, lat: 33.9578, lng: -118.4000, type: "facility", description: "Old Facility Entrance" },
+        { id: 201, lat: 33.9578, lng: -118.4000, type: "facility", description: "Old Facility Entrance", visited: true },
+        { id: 202, lat: 33.9600, lng: -118.4100, type: "facility", description: "Facility Rear Gate", visited: false }, // Added another facility
       ],
     },
     {
@@ -33,8 +34,9 @@ function App() {
       completed: false,
       requiredGpsTypes: ["supermarket", "gym"], // Task requires visiting a supermarket and a gym
       gpsPoints: [
-        { id: 301, lat: 34.1000, lng: -118.5000, type: "supermarket", description: "Main Provisioning Hub" },
-        { id: 302, lat: 34.1122, lng: -118.5134, type: "gym", description: "Rec Center" },
+        { id: 301, lat: 34.1000, lng: -118.5000, type: "supermarket", description: "Main Provisioning Hub", visited: false },
+        { id: 302, lat: 34.1122, lng: -118.5134, type: "gym", description: "Rec Center", visited: false },
+        { id: 303, lat: 34.1050, lng: -118.4900, type: "supermarket", description: "West Side Market", visited: false }, // Added another supermarket
       ],
     },
   ]);
@@ -73,7 +75,8 @@ function App() {
         task.id === currentTask.id ? { ...task, gpsPoints: updatedGpsPoints } : task
       )
     );
-    setCurrentTask((prevTask) => ({ ...prevTask, gpsPoints: updatedGpsPoints }));
+    // Also update currentTask state for immediate UI reflection without re-selecting
+    setCurrentTask((prevTask) => prevTask ? { ...prevTask, gpsPoints: updatedGpsPoints } : null);
   }, [currentTask]);
 
   const handleToggleComplete = useCallback((id) => {

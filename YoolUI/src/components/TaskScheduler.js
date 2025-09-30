@@ -49,9 +49,20 @@ const TaskScheduler = ({ tasks, setTasks, onSelectTask, onToggleComplete }) => {
       <ul className="task-list">
         {tasks.map((task) => (
           <li key={task.id} className={`task-item ${task.completed ? 'completed' : ''}`}>
-            <span className="task-name" title={task.name}>
-              {task.name}
-            </span>
+            <div className="task-content"> {/* Added a div to wrap name and types */}
+              <span className="task-name" title={task.name}>
+                {task.name}
+              </span>
+              {task.requiredGpsTypes && task.requiredGpsTypes.length > 0 && (
+                <div className="task-required-types">
+                  {task.requiredGpsTypes.map((type, index) => (
+                    <span key={index} className="task-type-tag">
+                      {type.toUpperCase()}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="task-actions">
               {!task.completed && (
                 <button
