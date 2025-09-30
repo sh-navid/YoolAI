@@ -117,6 +117,11 @@
   word-break: break-all;
 }
 
+.gps-item.required {
+  border: 1px solid #007bff; /* Highlight required GPS points */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
 .gps-item .gps-info {
   display: flex;
   flex-direction: column;
@@ -206,6 +211,27 @@
 .new-gps-input button:hover {
   background-color: #218838;
   transform: translateY(-1px);
+}
+
+.required-types-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.required-types-list span {
+  background-color: #e0f7fa;
+  color: #007bff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-weight: 500;
+  border: 1px solid #007bff;
 }
 
 /* Media queries for GPS Tracker */

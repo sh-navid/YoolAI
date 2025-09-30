@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import './GPSTracker.css';
 
-const GPSTracker = ({ taskName, gpsPoints, setGpsPoints }) => {
+const GPSTracker = ({ taskName, gpsPoints, requiredGpsTypes, setGpsPoints }) => {
   const [newLat, setNewLat] = useState('');
   const [newLng, setNewLng] = useState('');
-  const [newType, setNewType] = useState(''); // New state for type
+  const [newType, setNewType] = useState('');
   const [newDesc, setNewDesc] = useState('');
 
   const handleAddGpsPoint = () => {
-    if (newLat.trim() && newLng.trim() && newType.trim()) { // Type is now mandatory
+    if (newLat.trim() && newLng.trim() && newType.trim()) {
       const newPoint = {
         id: Date.now(),
-        lat: parseFloat(newLat), // Ensure latitude is a number
-        lng: parseFloat(newLng), // Ensure longitude is a number
-        type: newType.toLowerCase().trim(), // Store type in lowercase for consistency
+        lat: parseFloat(newLat),
+        lng: parseFloat(newLng),
+        type: newType.toLowerCase().trim(),
         description: newDesc.trim() || `Point ${Date.now() % 1000}`,
       };
       setGpsPoints((prevPoints) => [...prevPoints, newPoint]);
@@ -36,13 +36,24 @@ const GPSTracker = ({ taskName, gpsPoints, setGpsPoints }) => {
       <h2>GPS Coordinates</h2>
       {taskName && <h3 className="current-task-name">Mission: {taskName}</h3>}
 
+      {requiredGpsTypes && requiredGpsTypes.length > 0 && (
+        <>
+          <p>Required types for this mission:</p>
+          <ul className="required-types-list">
+            {requiredGpsTypes.map((type, index) => (
+              <span key={index}>{type.toUpperCase()}</span>
+            ))}
+          </ul>
+        </>
+      )}
+
       {gpsPoints.length === 0 && (
         <p className="no-gps-message">No GPS points for this mission yet. Add one below!</p>
       )}
 
       <ul className="gps-list">
         {gpsPoints.map((point) => (
-          <li key={point.id} className="gps-item">
+          <li key={point.id} className={`gps-item ${requiredGpsTypes?.includes(point.type) ? 'required' : ''}`}>
             <div className="gps-info">
               <span className="gps-type">[{point.type.toUpperCase()}]</span>
               <span className="gps-description">{point.description}</span>

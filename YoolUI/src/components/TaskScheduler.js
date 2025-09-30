@@ -1,28 +1,24 @@
 import React, { useState } from 'react';
 import './TaskScheduler.css';
 
-const TaskScheduler = ({ tasks, setTasks, onSelectTask }) => {
+const TaskScheduler = ({ tasks, setTasks, onSelectTask, onToggleComplete }) => {
   const [newTaskName, setNewTaskName] = useState('');
+  const [newTaskRequiredTypes, setNewTaskRequiredTypes] = useState(''); // New state for required GPS types
 
   const handleAddTask = () => {
     if (newTaskName.trim()) {
+      const requiredGpsTypesArray = newTaskRequiredTypes.split(',').map(type => type.trim().toLowerCase()).filter(Boolean);
       const newTask = {
         id: Date.now(),
         name: newTaskName,
         completed: false,
-        gpsPoints: [], // New tasks start with no GPS points
+        gpsPoints: [],
+        requiredGpsTypes: requiredGpsTypesArray,
       };
       setTasks((prevTasks) => [...prevTasks, newTask]);
       setNewTaskName('');
+      setNewTaskRequiredTypes('');
     }
-  };
-
-  const handleToggleComplete = (id) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
-    );
   };
 
   const handleDeleteTask = (id) => {
@@ -38,8 +34,14 @@ const TaskScheduler = ({ tasks, setTasks, onSelectTask }) => {
           type="text"
           value={newTaskName}
           onChange={(e) => setNewTaskName(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleAddTask()}
           placeholder="New mission briefing..."
+        />
+        <input
+          type="text"
+          value={newTaskRequiredTypes}
+          onChange={(e) => setNewTaskRequiredTypes(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && handleAddTask()}
+          placeholder="Required GPS types (comma-separated, e.g., supermarket, gym)"
         />
         <button onClick={handleAddTask}>Add Mission</button>
       </div>
@@ -47,10 +49,19 @@ const TaskScheduler = ({ tasks, setTasks, onSelectTask }) => {
       <ul className="task-list">
         {tasks.map((task) => (
           <li key={task.id} className={`task-item ${task.completed ? 'completed' : ''}`}>
-            <span onClick={() => handleToggleComplete(task.id)} className="task-name">
+            <span className="task-name" title={task.name}>
               {task.name}
             </span>
             <div className="task-actions">
+              {!task.completed && (
+                <button
+                  onClick={() => onToggleComplete(task.id)}
+                  className="done-button"
+                  title="Mark as Done"
+                >
+                  Done
+                </button>
+              )}
               <button
                 onClick={() => onSelectTask(task)}
                 className="view-gps-button"

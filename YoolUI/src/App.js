@@ -11,6 +11,8 @@ function App() {
       id: 1,
       name: "Investigate anomaly at Sector 7G",
       completed: false,
+      // gpsPoints are now types that can be fulfilled by any matching GPS point
+      requiredGpsTypes: ["anomaly", "research"],
       gpsPoints: [
         { id: 101, lat: 34.0522, lng: -118.2437, type: "anomaly", description: "Anomaly Site A" },
         { id: 102, lat: 15.0000, lng: -100.0000, type: "research", description: "Research Outpost" },
@@ -20,6 +22,7 @@ function App() {
       id: 2,
       name: "Retrieve data core from abandoned facility",
       completed: true,
+      requiredGpsTypes: ["facility"],
       gpsPoints: [
         { id: 201, lat: 33.9578, lng: -118.4000, type: "facility", description: "Old Facility Entrance" },
       ],
@@ -28,14 +31,14 @@ function App() {
       id: 3,
       name: "Restock supplies at distribution hub",
       completed: false,
+      requiredGpsTypes: ["supermarket", "gym"], // Task requires visiting a supermarket and a gym
       gpsPoints: [
         { id: 301, lat: 34.1000, lng: -118.5000, type: "supermarket", description: "Main Provisioning Hub" },
         { id: 302, lat: 34.1122, lng: -118.5134, type: "gym", description: "Rec Center" },
       ],
     },
   ]);
-  // We need to keep track of which task's GPS points we are currently viewing
-  const [currentTask, setCurrentTask] = useState(null); // Stores the full task object
+  const [currentTask, setCurrentTask] = useState(null);
   const [messages, setMessages] = useState([
     { id: 1, text: "Hello! How can I help you today?", sender: "bot" },
     { id: 2, text: "I have a question about YoolAI.", sender: "user" },
@@ -43,13 +46,12 @@ function App() {
 
   const handleSendMessage = useCallback((newMessageText) => {
     const newMessage = {
-      id: Date.now(), // Use Date.now() for unique IDs
+      id: Date.now(),
       text: newMessageText,
       sender: "user",
     };
     setMessages((prevMessages) => [...prevMessages, newMessage]);
 
-    // Simulate bot response
     setTimeout(() => {
       const botResponse = {
         id: Date.now() + 1,
@@ -61,20 +63,26 @@ function App() {
   }, []);
 
   const handleSelectTask = useCallback((task) => {
-    setCurrentTask(task); // Set the entire task object
-    setActiveView('gps'); // Automatically switch to GPS view when a task is selected
+    setCurrentTask(task);
+    setActiveView('gps');
   }, []);
 
   const updateTaskGpsPoints = useCallback((updatedGpsPoints) => {
-    // This function updates the GPS points for the current task
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === currentTask.id ? { ...task, gpsPoints: updatedGpsPoints } : task
       )
     );
-    // Also update the currentTask state so GPSTracker re-renders with fresh props
     setCurrentTask((prevTask) => ({ ...prevTask, gpsPoints: updatedGpsPoints }));
   }, [currentTask]);
+
+  const handleToggleComplete = useCallback((id) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  }, []);
 
   return (
     <div className="App">
@@ -84,18 +92,24 @@ function App() {
           <button onClick={() => { setActiveView('tasks'); setCurrentTask(null); }} className={activeView === 'tasks' ? 'active' : ''}>Tasks</button>
           <button onClick={() => setActiveView('gps')} className={activeView === 'gps' ? 'active' : ''}>GPS Points</button>
         </nav>
-      </header> {/* Move content-area out of header */}
-      <div className="content-area"> {/* Content area for dynamic views */}
+      </header>
+      <div className="content-area">
         {activeView === 'chat' && (
           <ChatWindow messages={messages} onSendMessage={handleSendMessage} />
         )}
         {activeView === 'tasks' && (
-          <TaskScheduler tasks={tasks} setTasks={setTasks} onSelectTask={handleSelectTask} />
+          <TaskScheduler
+            tasks={tasks}
+            setTasks={setTasks}
+            onSelectTask={handleSelectTask}
+            onToggleComplete={handleToggleComplete} // Pass the toggle complete handler
+          />
         )}
         {activeView === 'gps' && currentTask && (
           <GPSTracker
-            taskName={currentTask.name} // Pass task name for context
+            taskName={currentTask.name}
             gpsPoints={currentTask.gpsPoints}
+            requiredGpsTypes={currentTask.requiredGpsTypes} // Pass required GPS types
             setGpsPoints={updateTaskGpsPoints}
           />
         )}
