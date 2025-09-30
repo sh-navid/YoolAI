@@ -1,3 +1,4 @@
+/* [[YoolUI/src/App.js]] */
 import React, { useState, useCallback } from 'react';
 import './App.css';
 import ChatWindow from './components/ChatWindow';
@@ -105,14 +106,15 @@ function App() {
             tasks={tasks}
             setTasks={setTasks}
             onSelectTask={handleSelectTask}
-            onToggleComplete={handleToggleComplete} // Pass the toggle complete handler
+            onToggleComplete={handleToggleComplete}
           />
         )}
         {activeView === 'gps' && currentTask && (
           <GPSTracker
             taskName={currentTask.name}
-            gpsPoints={currentTask.gpsPoints}
-            requiredGpsTypes={currentTask.requiredGpsTypes} // Pass required GPS types
+            // Ensure gpsPoints and requiredGpsTypes are always arrays, even if currentTask is null
+            gpsPoints={currentTask.gpsPoints || []}
+            requiredGpsTypes={currentTask.requiredGpsTypes || []}
             setGpsPoints={updateTaskGpsPoints}
           />
         )}

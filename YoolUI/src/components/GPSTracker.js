@@ -14,9 +14,8 @@ const predefinedGpsTypes = [
 ];
 
 const GPSTracker = ({ taskName, gpsPoints, requiredGpsTypes, setGpsPoints }) => {
-  // Removed state for newLat, newLng, newType, newDesc as client cannot add.
-
-  // Removed handleAddGpsPoint function.
+  // --- No state for newLat, newLng, newType, newDesc as client cannot add. ---
+  // --- No handleAddGpsPoint function. ---
 
   const handleDeleteGpsPoint = (id) => {
     setGpsPoints((prevPoints) => prevPoints.filter((point) => point.id !== id));
@@ -29,6 +28,9 @@ const GPSTracker = ({ taskName, gpsPoints, requiredGpsTypes, setGpsPoints }) => 
       )
     );
   };
+
+  // Ensure gpsPoints is always an array before mapping
+  const pointsToRender = Array.isArray(gpsPoints) ? gpsPoints : [];
 
   return (
     <div className="gps-tracker-container">
@@ -48,13 +50,16 @@ const GPSTracker = ({ taskName, gpsPoints, requiredGpsTypes, setGpsPoints }) => 
         <p className="no-required-types-message">No specific GPS types required for this mission.</p>
       )}
 
-      {gpsPoints.length === 0 && (
+      {pointsToRender.length === 0 && (
         <p className="no-gps-message">No GPS points configured for this mission.</p>
       )}
 
       <ul className="gps-list">
-        {gpsPoints.map((point) => (
-          <li key={point.id} className={`gps-item ${requiredGpsTypes?.includes(point.type) ? 'required' : ''} ${point.visited ? 'visited' : ''}`}>
+        {pointsToRender.map((point) => (
+          <li
+            key={point.id}
+            className={`gps-item ${requiredGpsTypes?.includes(point.type) ? 'required' : ''} ${point.visited ? 'visited' : ''}`}
+          >
             <div className="gps-info">
               <span className="gps-type">[{point.type.toUpperCase()}]</span>
               <span className="gps-description">{point.description}</span>
@@ -78,7 +83,7 @@ const GPSTracker = ({ taskName, gpsPoints, requiredGpsTypes, setGpsPoints }) => 
         ))}
       </ul>
 
-      {/* The new-gps-input section is intentionally removed */}
+      {/* The new-gps-input section remains intentionally removed */}
     </div>
   );
 };
