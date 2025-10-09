@@ -1,16 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './ChatWindow.css';
 
 const ChatWindow = ({ messages, onSendMessage }) => {
   const [inputMessage, setInputMessage] = useState('');
-  const messagesEndRef = useRef(null); // Ref to scroll to the latest message
+  const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
-    scrollToBottom(); // Scroll on initial load and message updates
+    scrollToBottom();
   }, [messages]);
 
   const handleInputChange = (event) => {
@@ -25,15 +25,14 @@ const ChatWindow = ({ messages, onSendMessage }) => {
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter' && !event.shiftKey) { // Allow Shift+Enter for new lines
-      event.preventDefault(); // Prevent default Enter behavior (e.g., new line in textarea)
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
       handleSendClick();
     }
   };
 
   const handleVoiceButtonClick = () => {
     alert("Voice input is not yet implemented.");
-    // In a real application, you would integrate a Web Speech API or a third-party voice-to-text library here.
   };
 
   return (
@@ -44,7 +43,7 @@ const ChatWindow = ({ messages, onSendMessage }) => {
             {message.text}
           </div>
         ))}
-        <div ref={messagesEndRef} /> {/* Element to scroll to */}
+        <div ref={messagesEndRef} />
       </div>
       <div className="input-container">
         <input
