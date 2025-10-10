@@ -1,5 +1,3 @@
-// [[Server/Models/GpsLocationType.cs]]
-// [[Server/Models/GpsLocationType.cs]]
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
@@ -10,6 +8,7 @@ namespace Server.Models
     [Index(nameof(Name), IsUnique = true)]
     public class GpsLocationType
     {
+        [Key]
         public int Id { get; set; }
 
         private string _name;
