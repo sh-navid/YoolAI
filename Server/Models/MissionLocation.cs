@@ -22,5 +22,8 @@ namespace Server.Models
         public bool IsChecked { get; set; }
         
         public bool IsDone { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

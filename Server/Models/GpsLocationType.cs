@@ -41,5 +41,8 @@ namespace Server.Models
         [Required]
         [StringLength(100)]
         public required string DisplayName { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

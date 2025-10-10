@@ -13,5 +13,8 @@ namespace Server.Models
         
         public required string PasswordHash { get; set; } // Consider using a secure password hashing library
         // Consider adding other user properties like email, roles, etc.
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }
