@@ -1,5 +1,3 @@
-// [[Server/Models/Mission.cs]]
-//[[Server/Models/Mission.cs]]
 namespace Server.Models
 {
     public class Mission
