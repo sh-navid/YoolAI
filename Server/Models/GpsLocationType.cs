@@ -1,57 +1,46 @@
+// [[Server/Models/GpsLocationType.cs]]
+// [[Server/Models/GpsLocationType.cs]]
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Server.Models
 {
+    [Index(nameof(Name), IsUnique = true)]
     public class GpsLocationType
     {
         public int Id { get; set; }
 
+        private string _name;
+
         [Required]
-        [StringLength(100)] // Adjust length as needed
+        [StringLength(100)]
         [RegularExpression(@"^[a-zA-Z0-9\s]+$", ErrorMessage = "Name can only contain letters, numbers, and spaces.")]
-        public required string Name { get; set; }
-
-        // Method to validate and normalize the name; we use this to ensure uniqueness
-        public bool IsValidName()
+        [Column(TypeName = "VARCHAR")]
+        public required string Name
         {
-            if (string.IsNullOrWhiteSpace(Name))
+            get { return _name; }
+            set
             {
-                return false; // Or throw an exception if you prefer.
+                _name = SanitizeName(value);
             }
-
-            // Normalize the name.
-            string normalizedName = NormalizeName(Name);
-
-
-            // Check for uniqueness (assuming you have a repository or context)
-            // Example (assuming you have DbContext and a DbSet<GpsLocationType> named GpsLocationTypes)
-            // In reality, this check should usually go in the data access layer/repository.  This is for demonstration.
-                //using (var context = new YourDbContext())
-                //{
-                 //   return !context.GpsLocationTypes.Any(g => NormalizeName(g.Name) == normalizedName && g.Id != this.Id); // Exclude the current object.  Crucial for updating.
-                //}
-              return !string.IsNullOrWhiteSpace(normalizedName);
         }
 
-        public static string NormalizeName(string inputName)
+        private static string SanitizeName(string input)
         {
-            if (string.IsNullOrWhiteSpace(inputName))
+            if (string.IsNullOrWhiteSpace(input))
             {
-                return null;
+                return string.Empty;
             }
 
-            // 1. Remove leading/trailing whitespace.
-            string trimmedName = inputName.Trim();
+            string sanitized = Regex.Replace(input, @"[^a-zA-Z0-9\s]", "").ToUpperInvariant();
 
-            // 2. Convert to lowercase.
-            string lowerCaseName = trimmedName.ToLowerInvariant();
-
-            // 3. Replace multiple spaces with a single space.
-            while (lowerCaseName.Contains("  ")) {
-                lowerCaseName = lowerCaseName.Replace("  ", " ");
-            }
-
-           return lowerCaseName; // Return normalized result.
+            return sanitized.Trim();
         }
+
+        [Required]
+        [StringLength(100)]
+        public required string DisplayName { get; set; }
     }
 }
