@@ -1,4 +1,3 @@
-// [[Server/Data/SeedData.cs]]
 using Microsoft.EntityFrameworkCore;
 using Server.Models;
 

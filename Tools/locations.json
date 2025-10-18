@@ -1,0 +1,415 @@
+[
+  {
+    "Id": 4104320991,
+    "Lat": 35.8218428,
+    "Lon": 50.9364362,
+    "Name": "dentist",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 4350427740,
+    "Lat": 35.8124051,
+    "Lon": 50.9512104,
+    "Name": "bakery",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 4363555490,
+    "Lat": 35.8166652,
+    "Lon": 50.9529666,
+    "Name": "cafe",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 4370817396,
+    "Lat": 35.8231062,
+    "Lon": 50.9320464,
+    "Name": "restaurant",
+    "GpsLocationTypeId": 4
+  },
+  {
+    "Id": 4423430389,
+    "Lat": 35.8173525,
+    "Lon": 50.9532612,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 4944876021,
+    "Lat": 35.8156889,
+    "Lon": 50.9535877,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 5213972121,
+    "Lat": 35.8220157,
+    "Lon": 50.9356815,
+    "Name": "clinic",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 5495656321,
+    "Lat": 35.8100242,
+    "Lon": 50.9379167,
+    "Name": "restaurant",
+    "GpsLocationTypeId": 4
+  },
+  {
+    "Id": 5497781022,
+    "Lat": 35.8266984,
+    "Lon": 50.9379918,
+    "Name": "convenience",
+    "GpsLocationTypeId": 1
+  },
+  {
+    "Id": 5519537733,
+    "Lat": 35.8126836,
+    "Lon": 50.9353506,
+    "Name": "bakery",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 5569878388,
+    "Lat": 35.81951,
+    "Lon": 50.9366566,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 5680535525,
+    "Lat": 35.8075622,
+    "Lon": 50.9391975,
+    "Name": "bakery",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 5685358853,
+    "Lat": 35.8126861,
+    "Lon": 50.939214,
+    "Name": "bakery",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 6139813615,
+    "Lat": 35.8175677,
+    "Lon": 50.9359539,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 6177430994,
+    "Lat": 35.8174746,
+    "Lon": 50.9441878,
+    "Name": "convenience",
+    "GpsLocationTypeId": 1
+  },
+  {
+    "Id": 6304093003,
+    "Lat": 35.8182131,
+    "Lon": 50.9423225,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 6304106874,
+    "Lat": 35.8182039,
+    "Lon": 50.9423941,
+    "Name": "cafe",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 6371667131,
+    "Lat": 35.8167772,
+    "Lon": 50.9497469,
+    "Name": "bakery",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 6424135751,
+    "Lat": 35.81776,
+    "Lon": 50.9371381,
+    "Name": "dentist",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 6428439191,
+    "Lat": 35.8157064,
+    "Lon": 50.9552502,
+    "Name": "restaurant",
+    "GpsLocationTypeId": 4
+  },
+  {
+    "Id": 6428444386,
+    "Lat": 35.8157138,
+    "Lon": 50.9551712,
+    "Name": "clothes",
+    "GpsLocationTypeId": 8
+  },
+  {
+    "Id": 6437913085,
+    "Lat": 35.8226118,
+    "Lon": 50.9371097,
+    "Name": "cafe",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 6501611508,
+    "Lat": 35.8281518,
+    "Lon": 50.9387174,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 6771318114,
+    "Lat": 35.8181829,
+    "Lon": 50.939459,
+    "Name": "dentist",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 6804184583,
+    "Lat": 35.8157329,
+    "Lon": 50.9550948,
+    "Name": "dentist",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 7746132131,
+    "Lat": 35.8206626,
+    "Lon": 50.9382191,
+    "Name": "hairdresser",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 7803790209,
+    "Lat": 35.8159799,
+    "Lon": 50.9533496,
+    "Name": "hairdresser",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 8903892327,
+    "Lat": 35.8230078,
+    "Lon": 50.9308828,
+    "Name": "restaurant",
+    "GpsLocationTypeId": 4
+  },
+  {
+    "Id": 9121898141,
+    "Lat": 35.8169654,
+    "Lon": 50.953008,
+    "Name": "cafe",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 9183458686,
+    "Lat": 35.8175042,
+    "Lon": 50.9440879,
+    "Name": "dentist",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 9248178262,
+    "Lat": 35.8162732,
+    "Lon": 50.9500645,
+    "Name": "hospital",
+    "GpsLocationTypeId": 1
+  },
+  {
+    "Id": 9248463449,
+    "Lat": 35.8198431,
+    "Lon": 50.9457839,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 9621503847,
+    "Lat": 35.8179717,
+    "Lon": 50.9416344,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 9863204315,
+    "Lat": 35.8245661,
+    "Lon": 50.940806,
+    "Name": "hairdresser",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 9962614526,
+    "Lat": 35.8160527,
+    "Lon": 50.9530189,
+    "Name": "clothes",
+    "GpsLocationTypeId": 8
+  },
+  {
+    "Id": 10095125109,
+    "Lat": 35.8202349,
+    "Lon": 50.9364313,
+    "Name": "clothes",
+    "GpsLocationTypeId": 8
+  },
+  {
+    "Id": 10697017691,
+    "Lat": 35.8187941,
+    "Lon": 50.9392637,
+    "Name": "restaurant",
+    "GpsLocationTypeId": 4
+  },
+  {
+    "Id": 10723040690,
+    "Lat": 35.8182399,
+    "Lon": 50.9398455,
+    "Name": "cafe",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 11152238644,
+    "Lat": 35.8243656,
+    "Lon": 50.9475914,
+    "Name": "restaurant",
+    "GpsLocationTypeId": 4
+  },
+  {
+    "Id": 11204610824,
+    "Lat": 35.818183,
+    "Lon": 50.9440125,
+    "Name": "ice_cream",
+    "GpsLocationTypeId": 8
+  },
+  {
+    "Id": 11330916495,
+    "Lat": 35.8155709,
+    "Lon": 50.9543502,
+    "Name": "cafe",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 11377297711,
+    "Lat": 35.827417,
+    "Lon": 50.9547972,
+    "Name": "clinic",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 11414457832,
+    "Lat": 35.8152591,
+    "Lon": 50.9357021,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 11727605955,
+    "Lat": 35.8186647,
+    "Lon": 50.9388159,
+    "Name": "cafe",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 11833729791,
+    "Lat": 35.8162691,
+    "Lon": 50.9506281,
+    "Name": "fast_food",
+    "GpsLocationTypeId": 5
+  },
+  {
+    "Id": 12018447165,
+    "Lat": 35.8178362,
+    "Lon": 50.9442678,
+    "Name": "clinic",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 12043399079,
+    "Lat": 35.8202534,
+    "Lon": 50.9362999,
+    "Name": "clothes",
+    "GpsLocationTypeId": 8
+  },
+  {
+    "Id": 12052952083,
+    "Lat": 35.8209571,
+    "Lon": 50.9332559,
+    "Name": "cafe",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 12363321061,
+    "Lat": 35.8244752,
+    "Lon": 50.9479068,
+    "Name": "clinic",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 12492098011,
+    "Lat": 35.8172285,
+    "Lon": 50.9459311,
+    "Name": "clothes",
+    "GpsLocationTypeId": 8
+  },
+  {
+    "Id": 12520228186,
+    "Lat": 35.8235771,
+    "Lon": 50.9334432,
+    "Name": "restaurant",
+    "GpsLocationTypeId": 4
+  },
+  {
+    "Id": 12572023469,
+    "Lat": 35.821409,
+    "Lon": 50.9363903,
+    "Name": "clinic",
+    "GpsLocationTypeId": 2
+  },
+  {
+    "Id": 12794467992,
+    "Lat": 35.8254608,
+    "Lon": 50.9335981,
+    "Name": "florist",
+    "GpsLocationTypeId": 6
+  },
+  {
+    "Id": 12818996349,
+    "Lat": 35.8200416,
+    "Lon": 50.9281344,
+    "Name": "restaurant",
+    "GpsLocationTypeId": 4
+  },
+  {
+    "Id": 12851410108,
+    "Lat": 35.8159339,
+    "Lon": 50.9542049,
+    "Name": "clothes",
+    "GpsLocationTypeId": 8
+  },
+  {
+    "Id": 12894750312,
+    "Lat": 35.8217428,
+    "Lon": 50.9395552,
+    "Name": "cafe",
+    "GpsLocationTypeId": 3
+  },
+  {
+    "Id": 13015547541,
+    "Lat": 35.825062,
+    "Lon": 50.9462307,
+    "Name": "restaurant",
+    "GpsLocationTypeId": 4
+  },
+  {
+    "Id": 13037182014,
+    "Lat": 35.8285717,
+    "Lon": 50.9390172,
+    "Name": "clothes",
+    "GpsLocationTypeId": 8
+  },
+  {
+    "Id": 13197465170,
+    "Lat": 35.8249054,
+    "Lon": 50.9446534,
+    "Name": "dentist",
+    "GpsLocationTypeId": 3
+  }
+]

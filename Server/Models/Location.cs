@@ -7,7 +7,7 @@ namespace Server.Models
     {
         [Key]
         public int Id { get; set; }
-        
+
         public required string Name { get; set; }
 
         // Foreign key property
@@ -17,9 +17,10 @@ namespace Server.Models
         [ForeignKey("GpsLocationTypeId")]
         public GpsLocationType? GpsLocationType { get; set; }
 
-        public double Lat { get; set; }
-        
-        public double Lon { get; set; }
+        public required double Lat { get; set; }
+        public required double Lon { get; set; }
+        public double Alt { get; set; } = 0;
+        public double Floor { get; set; } = 0;
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;

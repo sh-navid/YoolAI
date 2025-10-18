@@ -4,10 +4,6 @@ namespace Server.Models
 {
     public class MissionLocation
     {
-        public int UserId { get; set; }
-        
-        [ForeignKey("UserId")]
-        public User? User { get; set; }
 
         public int MissionId { get; set; }
         

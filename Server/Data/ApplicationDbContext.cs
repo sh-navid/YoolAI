@@ -25,7 +25,7 @@ namespace Server.Data
                 .HasForeignKey(m => m.GpsLocationTypeId);
 
             modelBuilder.Entity<MissionLocation>()
-                .HasKey(ml => new { ml.UserId, ml.MissionId, ml.LocationId }); // Composite key for MissionLocation
+                .HasKey(ml => new { ml.MissionId, ml.LocationId }); // Composite key for MissionLocation
         }
     }
 }
